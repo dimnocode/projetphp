@@ -38,7 +38,7 @@ class Model{
                 if ($sql!='') {
                     $sql .=' and ';
                 }
-             if (gettype($val) != "text"){
+             if (gettype($val) != "string"){
                 $sql .=$key." = ".$val;
             }else {
                  $sql .=$key." like '%".$val."%'";
