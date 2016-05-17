@@ -40,6 +40,8 @@
             if($_POST["actif"] == "tous" ){
                 unset($_POST["actif"]);  
             }
+        }else{
+            $_POST["actif"] = 1;
         }
     
     $utilisateurs->list(null, $_POST);
