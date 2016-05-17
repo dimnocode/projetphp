@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class Model{
 	Public $table;
 	private $connection;
@@ -7,9 +7,9 @@ class Model{
 		
 		try {
 
-		  $dns = 'mysql:host=127.0.0.1;dbname=northwind';
-		  $utilisateur = "northwind";
-		  $motDePasse = 'northwind';
+		  $dns = 'mysql:host=127.0.0.1;dbname=ventelivres';
+		  $utilisateur = "root";
+		  $motDePasse = '';
 		 
 		  // Options de connection
 		  $options = array(
@@ -24,7 +24,7 @@ class Model{
 		}
 	}
 	
-	public function read($fields=null,$search=null){
+	public function list($fields=null,$search=null){
 		if($fields==null){
 			$fields = '*';
 		}
@@ -35,13 +35,19 @@ class Model{
          $sql='';
          foreach($search as $key => $val) {
             if (isset($key)) {
-            if ($sql!='') {
-               $sql .=' and ';
+                if ($sql!='') {
+                    $sql .=' and ';
+                }
+             if (gettype($val) != "text"){
+                $sql .=$key." = ".$val;
+            }else {
+                 $sql .=$key." like '%".$val."%'";
+             }
+            
             }
-            $sql .=$key." like '%".$val."%'";
-         }
          }
 			$sql= 'SELECT '.$fields.' from '.$this->table .'  where '.$sql;
+            //echo $sql;
 		}
       
 		
@@ -51,6 +57,7 @@ class Model{
 		  $select = $this->connection->query($sql);
 		  // On indique que nous utiliserons les résultats en tant qu'objet
 		$select->setFetchMode(PDO::FETCH_OBJ);
+            
 		$this->data = new stdClass();
 			$this->data = $select->fetchAll();
 
@@ -66,21 +73,28 @@ class Model{
 			
 			$titre= '<tr>';
 			$titre_trt= false;
-			
+			//var_dump($this->data);
 			foreach($this->data as $key => $element){
-				$out .= "<tr>";
+                
+				$out .= '<tr>';
+                //echo "<br>";
+                //echo "<br>";
+                //var_dump($element);
 				foreach($element as $subkey => $subelement){
+                    
 					if($titre_trt==false){
-						$titre .= '<th>'.$subkey.'</th>' ;	
+						$titre .= '<th>'.$subkey.'</th>';	
 					}
-					
+					//echo "<br>";
+                    //echo "<br>";
+                    //var_dump($subelement);
 					$out .= '<td>'.$subelement.'</td>' ;
 				}
 				if($titre_trt==false){
-					$titre.= '</tr>';
+					$titre.= '<th>Mod</th><th>Action</th></tr>';
 				}
 				$titre_trt= true;
-				$out .= "</tr>";
+				$out .= '<td>'.$element->utilisateur.'</td></tr>';
 			}
 			$out = '<table>'.$titre.$out.'</table>';
 			
@@ -100,4 +114,3 @@ class Model{
 
 
 ?>
-

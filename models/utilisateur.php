@@ -1,6 +1,6 @@
 <?php
 
-class utilisateur {
+class utilisateur extends Model{
     
     private $utilisateur;
     private $code;
@@ -8,6 +8,10 @@ class utilisateur {
     private $prenom;
     private $admin;
     private $actif;
+    
+    var $table = "utilisateurs";	
+	var $PK = "utilisateur";
+	var $data; 
     
     public function getUtilisateur(){
 		return $this->utilisateur;
@@ -56,6 +60,11 @@ class utilisateur {
 	public function setActif($actif){
 		$this->actif = $actif;
 	}
+    
+    public function __toString()
+    {
+        return "Salut!";
+    }
     
     
     
