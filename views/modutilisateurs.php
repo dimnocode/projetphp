@@ -2,7 +2,7 @@
 	require 'haut.php';
 ?>
 
-<h2>Utilisateurs</h2>
+<h2>Modification/Ajout utilisateur</h2>
 
 <?php
     $last_post = $_POST;

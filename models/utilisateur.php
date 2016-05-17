@@ -13,6 +13,21 @@ class utilisateur extends Model{
 	var $PK = "utilisateur";
 	var $data; 
     
+    
+    public function modif($element){
+        return "<td><form action=\"\" method=\"get\"> <input type=\"hidden\"  name=\"id\" value=\"".$element->utilisateur."\"> <input type=\"submit\" value=\"Mod\"></form></td>";
+    }
+    
+    public function action($element){        
+        
+        if($element->actif == 1){
+            $checked = "checked";
+        }else{
+            $checked = "";  
+        }
+        return "<td><form action=\"\" method=\"get\"> <input type=\"hidden\"  name=\"id\" value=\"".$element->utilisateur."\"> <input type=\"checkbox\" name=\"actif\" value=\"actif\"" .$checked." > </form></td>";
+    }
+    
     public function getUtilisateur(){
 		return $this->utilisateur;
 	}

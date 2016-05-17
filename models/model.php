@@ -66,7 +66,7 @@ class Model{
 		}
 	}
 	
-	public function rtv_Table(){
+	public function rtv_Table($type){
 	
 			
 			$out  = "";
@@ -94,7 +94,17 @@ class Model{
 					$titre.= '<th>Mod</th><th>Action</th></tr>';
 				}
 				$titre_trt= true;
-				$out .= '<td>'.$element->utilisateur.'</td></tr>';
+                $out .= $this->modif($element);
+                $out .= $this->action($element);
+                
+//				if($type == "utilisateur"){
+//                  $out .= '<td>'.$element->utilisateur.'</td></tr>';  
+//                }
+//                
+//                if($type == "livre"){
+//                  $out .= '<td>'.$element->LivreID.'</td></tr>';  
+//                }
+                
 			}
 			$out = '<table>'.$titre.$out.'</table>';
 			

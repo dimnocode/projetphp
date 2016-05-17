@@ -10,7 +10,17 @@ class livre extends Model {
 
     var $table = "livres";	
 	var $PK = "LivreID";
-	var $data ; 
+	var $data ;
+    
+    public function modif($element){
+         return "<td><form action=\"\" method=\"post\"> <input type=\"hidden\"  name=\"id\" value=\"".$element->LivreID."\"> <input type=\"submit\" value=\"Mod\"></form></td>";
+    }
+    
+    public function action($element){        
+        
+        return "<td><form action=\"\" method=\"post\"> <input type=\"hidden\"  name=\"id\" value=\"".$element->LivreID."\"> <input type=\"number\" name=\"qte\" min=\"1\" max=\"10\" value=\"1\"> 
+        <input type=\"submit\" value=\"Ajouter\"> </form></td>";
+    }
 
 
     public function getLivreID(){
