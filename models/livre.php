@@ -13,7 +13,7 @@ class livre extends Model {
 	var $data ;
     
     public function modif($element){
-         return "<td><form action=\"\" method=\"post\"> <input type=\"hidden\"  name=\"id\" value=\"".$element->LivreID."\"> <input type=\"submit\" value=\"Mod\"></form></td>";
+         return "<td><form action=\"modlivres.php\" method=\"post\"> <input type=\"hidden\"  name=\"id\" value=\"".$element->LivreID."\"> <input type=\"submit\" value=\"Mod\"></form></td>";
     }
     
     public function action($element){        

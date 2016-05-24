@@ -9,7 +9,6 @@
 ?>
 
 <form method="post" action="">
-    <input type="text" name="code" placeholder="code" value="<?php if(isset($last_post["code"])){ echo $last_post["code"];} ?>">
     <input type="text" name="nom" placeholder="Nom" value="<?php if(isset($last_post["nom"])){ echo $last_post["nom"];} ?>">
     <input type="text" name="prenom" placeholder="Prenom" value="<?php if(isset($last_post["prenom"])){ echo $last_post["prenom"];} ?>">
 

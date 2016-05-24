@@ -15,7 +15,7 @@ class utilisateur extends Model{
     
     
     public function modif($element){
-        return "<td><form action=\"\" method=\"get\"> <input type=\"hidden\"  name=\"id\" value=\"".$element->utilisateur."\"> <input type=\"submit\" value=\"Mod\"></form></td>";
+        return "<td><form action=\"\" method=\"post\"> <input type=\"hidden\"  name=\"id\" value=\"".$element->utilisateur."\"> <input type=\"submit\" value=\"Mod\"></form></td>";
     }
     
     public function action($element){        
@@ -25,7 +25,11 @@ class utilisateur extends Model{
         }else{
             $checked = "";  
         }
+<<<<<<< HEAD
         return "<td><form action=\"\" method=\"get\"> <input type=\"hidden\"  name=\"id\" value=\"".$element->utilisateur."\"> <input type=\"checkbox\" id=\"actif\" name=\"actif\" value=\"actif\"" .$checked." > </form></td>";
+=======
+        return "<td><form action=\"\" method=\"post\"> <input type=\"hidden\"  name=\"id\" value=\"".$element->utilisateur."\"> <input type=\"checkbox\" name=\"actif\" value=\"actif\"" .$checked." > </form></td>";
+>>>>>>> 47b8f3b179e6ab580b43406199e458cb4ea02a41
     }
     
     public function getID($element){
