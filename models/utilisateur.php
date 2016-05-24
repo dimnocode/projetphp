@@ -25,62 +25,47 @@ class utilisateur extends Model{
         }else{
             $checked = "";  
         }
-        return "<td><form action=\"\" method=\"get\"> <input type=\"hidden\"  name=\"id\" value=\"".$element->utilisateur."\"> <input type=\"checkbox\" name=\"actif\" value=\"actif\"" .$checked." > </form></td>";
+        return "<td><form action=\"\" method=\"get\"> <input type=\"hidden\"  name=\"id\" value=\"".$element->utilisateur."\"> <input type=\"checkbox\" id=\"actif\" name=\"actif\" value=\"actif\"" .$checked." > </form></td>";
     }
     
-    public function getUtilisateur(){
-		return $this->utilisateur;
-	}
-
-	public function setUtilisateur($utilisateur){
-		$this->utilisateur = $utilisateur;
-	}
-
-	public function getCode(){
-		return $this->code;
-	}
-
-	public function setCode($code){
-		$this->code = $code;
-	}
-
-	public function getNom(){
-		return $this->nom;
-	}
-
-	public function setNom($nom){
-		$this->nom = $nom;
-	}
-
-	public function getPrenom(){
-		return $this->prenom;
-	}
-
-	public function setPrenom($prenom){
-		$this->prenom = $prenom;
-	}
-
-	public function getAdmin(){
-		return $this->admin;
-	}
-
-	public function setAdmin($admin){
-		$this->admin = $admin;
-	}
-
-	public function getActif(){
-		return $this->actif;
-	}
-
-	public function setActif($actif){
-		$this->actif = $actif;
+    public function getID($element){
+		return $element->utilisateur;
 	}
     
-    public function __toString()
-    {
-        return "Salut!";
-    }
+    static function auth($UTILISATEUR, $CODE){
+		$utilisateurs=Model::load("utilisateurs");
+		$utilisateurs->read('code, actif',array('utilisateur' => $UTILISATEUR ));
+		if(count($utilisateurs->data) >0 && $utilisateurs->data[0]->code==$CODE && $utilisateurs->data[0]->actif==1){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	static function admin(){
+		if (isset($_SESSION['UTILISATEUR'])){
+			$utilisateurs=Model::load("utilisateurs");
+			$utilisateurs->read('admin',array('utilisateur' => $UTILISATEUR ));
+			if(count($utilisateurs->data) >0 && $utilisateurs->data[0]->admin==1){
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+
+	}
     
+    function utilisateur_activ($Utilisateur){
+		$sql= "call utilisateur_activ ('".$Utilisateur."') ";
+		parent::getConnection()->query($sql);
+	}
+
+	function utilisateur_desactiv($Utilisateur){
+		$sql= "call utilisateur_desactiv ('".$Utilisateur."') ";
+		parent::getConnection()->query($sql);
+	}
     
     
 }

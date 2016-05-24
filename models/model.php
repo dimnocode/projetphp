@@ -74,6 +74,7 @@ class Model{
 			$titre= '<tr>';
 			$titre_trt= false;
 			//var_dump($this->data);
+            
 			foreach($this->data as $key => $element){
                 
 				$out .= '<tr>';
@@ -106,7 +107,7 @@ class Model{
 //                }
                 
 			}
-			$out = '<table>'.$titre.$out.'</table>';
+			$out = '<table id="'.$this->table.'">'.$titre.$out.'</table>';
 			
 
 			return $out;
@@ -117,6 +118,10 @@ class Model{
 		require ($name.'.php');
 		return new $name();
 	}
+    
+    public function getConnection() {
+        return $this->connection;
+    }
 	
 
 }
