@@ -10,7 +10,7 @@
 
 <form method="post" action="">
     <input type="text" name="titre" placeholder="Titre" value="<?php if(isset($last_post["titre"])){ echo $last_post["titre"];} ?>">
-    <input type="text" name="auteur" placeholder="auteur" value="<?php if(isset($last_post["auteur"])){ echo $last_post["auteur"];} ?>">
+    <input type="text" name="auteur" placeholder="Auteur" value="<?php if(isset($last_post["auteur"])){ echo $last_post["auteur"];} ?>">
     
     <input type="radio" name="actif" value="tous"       <?php if(isset($last_post["actif"]) && $last_post["actif"] == "tous"){ echo 'checked';} ?>          > Tous     
     <input type="radio" name="actif" value="actifs"     <?php if(!isset($last_post["actif"]) || $last_post["actif"] == "actifs"){ echo 'checked';} ?>       > Disponibles              

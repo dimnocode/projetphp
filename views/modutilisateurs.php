@@ -9,46 +9,16 @@
 ?>
 
 <form method="post" action="">
-    <input type="text" name="code" placeholder="code" value="<?php if(isset($last_post["code"])){ echo $last_post["code"];} ?>">
-    <input type="text" name="nom" placeholder="Nom" value="<?php if(isset($last_post["nom"])){ echo $last_post["nom"];} ?>">
-    <input type="text" name="prenom" placeholder="Prenom" value="<?php if(isset($last_post["prenom"])){ echo $last_post["prenom"];} ?>">
-
-    <input type="radio" name="actif" value="tous"       <?php if(isset($last_post["actif"]) && $last_post["actif"] == "tous"){ echo 'checked';} ?>          > Tous     
-    <input type="radio" name="actif" value="actifs"     <?php if(!isset($last_post["actif"]) || $last_post["actif"] == "actifs"){ echo 'checked';} ?>       > Actifs              
-    <input type="radio" name="actif" value="inactifs"   <?php if(isset($last_post["actif"]) && $last_post["actif"] == "inactifs"){ echo 'checked';} ?>      > Incatifs      
+    <input type="button" value="Actif/Inactif"><br>
+    <input type="text" name="nom" placeholder="Nom" value="<?php if(isset($last_post["nom"])){ echo $last_post["nom"];} ?>"><br>
+    <input type="text" name="prenom" placeholder="Prenom" value="<?php if(isset($last_post["prenom"])){ echo $last_post["prenom"];} ?>"><br>
+    <input type="text" name="utilisateur" placeholder="Utilisateur" value="<?php if(isset($last_post["utilisateur"])){ echo $last_post["utilisateur"];} ?>"><br>
+    <input type="password" name="code" placeholder="Code" value="<?php if(isset($last_post["code"])){ echo $last_post["code"];} ?>"><br>
 
     <input type="submit" value="Envoyer">
 </form>
 
 
 <?php
-    $utilisateurs=Model::load("utilisateur");
-     
-        //Si le champs actif est setté
-        if(isset($_POST["actif"])){ 
-            
-            //Si le champs actif a comme valeur "actifs"
-            if($_POST["actif"] == "actifs"){                
-                $_POST["actif"] = 1; 
-            }
-            //Si le champs actif a comme valeur "inactifs"
-            if($_POST["actif"] == "inactifs"){
-                $_POST['actif'] = 2;
-            }
-            
-            //Si le champs actif a comme valeur "tous"
-            if($_POST["actif"] == "tous" ){
-                unset($_POST["actif"]);  
-            }
-        }else{
-            $_POST["actif"] = 1;
-        }
-    
-    $utilisateurs->list(null, $_POST);
-    echo $utilisateurs->rtv_Table("utilisateur");
-    
-?>
-
-        <?php
 	require 'bas.php';
 ?>
