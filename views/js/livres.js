@@ -8,10 +8,10 @@ var  clicActive = function(){
 	var elem = $( this );
 	$.post( $destination, { livre : $(this).prev().attr('value')} )
   			.done(function( data ) {
-                
-	    			alert(data);
+                    alert(data);
 	    			elem.empty();
 	    			elem.html(data);
+                   
   					}
   				);
 };

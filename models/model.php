@@ -66,7 +66,7 @@ class Model{
 		}
 	}
 	
-	public function rtv_Table($type){
+	public function rtv_Table(){
 	
 			
 			$out  = "";
@@ -76,23 +76,25 @@ class Model{
 			//var_dump($this->data);
             
 			foreach($this->data as $key => $element){
-                
+               
 				$out .= '<tr>';
                 //echo "<br>";
                 //echo "<br>";
+                
                 //var_dump($element);
 				foreach($element as $subkey => $subelement){
-                    
-					if($titre_trt==false){
-						$titre .= '<th>'.$subkey.'</th>';	
-					}
-					//echo "<br>";
-                    //echo "<br>";
-                    //var_dump($subelement);
-					$out .= '<td>'.$subelement.'</td>' ;
+                    if ($subkey != 'actif') {
+                        if($titre_trt==false){
+                            $titre .= '<th>'.$subkey.'</th>';	
+                        }
+                        //echo "<br>";
+                        //echo "<br>";
+                        //var_dump($subelement);
+                        $out .= '<td>'.$subelement.'</td>' ;
+                    }
 				}
 				if($titre_trt==false){
-					$titre.= '<th>Mod</th><th>Action</th></tr>';
+					$titre.= '<th>Mod</th><th>Actif</th></tr>';
 				}
 				$titre_trt= true;
                 $out .= $this->modif($element);

@@ -8,8 +8,6 @@ var  clicActive = function(){
 	var elem = $( this );
 	$.post( $destination, { utilisateur : $(this).prev().attr('value')} )
   			.done(function( data ) {
-                
-	    			alert(data);
 	    			elem.empty();
 	    			elem.html(data);
   					}

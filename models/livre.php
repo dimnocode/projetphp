@@ -30,6 +30,7 @@ class livre extends Model {
 
 
     function livre_activ($livre){
+        echo $livre;
 		$sql= "call livre_activ ('".$livre."') ";
 		parent::getConnection()->query($sql);
 	}
@@ -39,5 +40,51 @@ class livre extends Model {
 		parent::getConnection()->query($sql);
 	}
 
+    function print_table() {
+            $out  = "";
+			
+			$titre= '<tr>';
+			$titre_trt= false;
+			//var_dump($this->data);
+            
+			foreach($this->data as $key => $element){
+               
+				$out .= '<tr>';
+                //echo "<br>";
+                //echo "<br>";
+                
+                //var_dump($element);
+				foreach($element as $subkey => $subelement){
+                    if ($subkey != 'actif') {
+                        if($titre_trt==false){
+                            $titre .= '<th>'.$subkey.'</th>';	
+                        }
+                        //echo "<br>";
+                        //echo "<br>";
+                        //var_dump($subelement);
+                        $out .= '<td>'.$subelement.'</td>' ;
+                    }
+				}
+				if($titre_trt==false){
+					$titre.= '<th>Mod</th><th>Actif</th></tr>';
+				}
+				$titre_trt= true;
+                $out .= $this->modif($element);
+                $out .= $this->action($element);
+                
+//				if($type == "utilisateur"){
+//                  $out .= '<td>'.$element->utilisateur.'</td></tr>';  
+//                }
+//                
+//                if($type == "livre"){
+//                  $out .= '<td>'.$element->LivreID.'</td></tr>';  
+//                }
+                
+			}
+			$out = '<table id="'.$this->table.'">'.$titre.$out.'</table>';
+			
+
+			return $out;
+    }
 }
 ?>
