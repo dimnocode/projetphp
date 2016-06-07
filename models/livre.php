@@ -18,49 +18,26 @@ class livre extends Model {
     
     public function action($element){        
         
-        return "<td><form action=\"\" method=\"post\"> <input type=\"hidden\"  name=\"id\" value=\"".$element->LivreID."\"> <input type=\"number\" name=\"qte\" min=\"1\" max=\"10\" value=\"1\"> 
-        <input type=\"submit\" value=\"Ajouter\"> </form></td>";
+        if($element->actif == 1){
+            $checked = "checked";
+        }else{
+            $checked = "";  
+        }
+        return "<td><form action=\"\" method=\"get\"> <input type=\"hidden\"  name=\"id\" value=\"".$element->LivreID."\"> <input type=\"checkbox\" id=\"actif\" name=\"actif\" value=\"actif\" " .$checked." > </form></td>";
+
     }
+    
 
 
-    public function getLivreID(){
-		return $this->LivreID;
+    function livre_activ($livre){
+		$sql= "call livre_activ ('".$livre."') ";
+		parent::getConnection()->query($sql);
 	}
 
-	public function setLivreID($LivreID){
-		$this->LivreID = $LivreID;
+	function livre_desactiv($livre){
+		$sql= "call livre_desactiv ('".$livre."') ";
+		parent::getConnection()->query($sql);
 	}
 
-	public function getTitre(){
-		return $this->titre;
-	}
-
-	public function setTitre($titre){
-		$this->titre = $titre;
-	}
-
-	public function getAuteur(){
-		return $this->auteur;
-	}
-
-	public function setAuteur($auteur){
-		$this->auteur = $auteur;
-	}
-
-	public function getPrix_unitaire(){
-		return $this->prix_unitaire;
-	}
-
-	public function setPrix_unitaire($prix_unitaire){
-		$this->prix_unitaire = $prix_unitaire;
-	}
-
-	public function isActif(){
-		return $this->actif;
-	}
-
-	public function setActif($actif){
-		$this->actif = $actif;
-	}
 }
 ?>

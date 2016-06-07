@@ -16,4 +16,5 @@ var  clicActive = function(){
   				);
 };
 
-$('#utilisateurs #actif').on('click',clicActive);
+$(document).on('click','#utilisateurs #actif',clicActive);
+//$('#utilisateurs #actif').on('click',clicActive);
