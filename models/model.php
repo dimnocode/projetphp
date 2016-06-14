@@ -66,7 +66,7 @@ class Model{
 		}
 	}
 	
-	public function rtv_Table(){
+	public function rtv_Table($type){
 	
 			
 			$out  = "";
@@ -90,7 +90,7 @@ class Model{
                         //echo "<br>";
                         //echo "<br>";
                         //var_dump($subelement);
-                        $out .= '<td>'.$subelement.'</td>' ;
+                        $out .= '<td id="'.$subkey.'">'.$subelement.'</td>' ;
                     }
 				}
 				if($titre_trt==false){
@@ -101,11 +101,11 @@ class Model{
                 $out .= $this->action($element);
                 
 //				if($type == "utilisateur"){
-//                  $out .= '<td>'.$element->utilisateur.'</td></tr>';  
+//                  $out .= '<td id="id">'.$element->utilisateur.'</td></tr>';  
 //                }
 //                
 //                if($type == "livre"){
-//                  $out .= '<td>'.$element->LivreID.'</td></tr>';  
+//                  $out .= '<td id="id">'.$element->LivreID.'</td></tr>';  
 //                }
                 
 			}

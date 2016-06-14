@@ -6,8 +6,9 @@ var  clicActive = function(){
         $destination='../controllers/control_utilisateur_activ.php';
     }
 	var elem = $( this );
-	$.post( $destination, { utilisateur : $(this).prev().attr('value')} )
+	$.post( $destination, { utilisateur : $(this).parent().first("#utilisateur").html()} )
   			.done(function( data ) {
+                    alert(data);
 	    			elem.empty();
 	    			elem.html(data);
   					}

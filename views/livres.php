@@ -44,7 +44,7 @@
         }
     
     $livres->list(null, $_POST);
-    echo $livres->print_Table();
+    echo $livres->rtv_Table("livre");
 ?>
 
 <?php
