@@ -1,5 +1,5 @@
-<?php 
-	require "../controllers/core.php";
+<?php	
+	require_once "../controllers/core.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,5 +11,11 @@
 </head>
 <body>
 	<?php
-	require 'header.php';
+	if (isset($_SESSION['UTILISATEUR'])) {
+	  require 'header.php';
+	}
+	else {
+		header('Location: login.php');
+		exit();
+	}
 	?>

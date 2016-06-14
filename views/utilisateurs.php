@@ -44,10 +44,8 @@
         }
     
     $utilisateurs->list(null, $_POST);
-    echo $utilisateurs->rtv_Table("utilisateur");
+    echo $utilisateurs->print_Table();
+   
     
-?>
-
-        <?php
 	require 'bas.php';
 ?>

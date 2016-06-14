@@ -9,6 +9,7 @@ class utilisateur extends Model{
     private $admin;
     private $actif;
     
+    var $id;
     var $table = "utilisateurs";	
 	var $PK = "utilisateur";
 	var $data; 
@@ -34,7 +35,8 @@ class utilisateur extends Model{
 	}
     
     static function auth($UTILISATEUR, $CODE){
-		$utilisateurs=Model::load("utilisateurs");
+		//$utilisateurs=Model::load("utilisateurs");
+    	$utilisateurs = new utilisateur;
 		$utilisateurs->read('code, actif',array('utilisateur' => $UTILISATEUR ));
 		if(count($utilisateurs->data) >0 && $utilisateurs->data[0]->code==$CODE && $utilisateurs->data[0]->actif==1){
 			return true;
@@ -68,6 +70,52 @@ class utilisateur extends Model{
 		parent::getConnection()->query($sql);
 	}
     
+	function print_table() {
+		$out  = "";
+			
+		$titre= '<tr>';
+		$titre_trt= false;
+		//var_dump($this->data);
+	
+		foreach($this->data as $key => $element){
+			 
+			$out .= '<tr>';
+			//echo "<br>";
+			//echo "<br>";
+	
+			//var_dump($element);
+			foreach($element as $subkey => $subelement){
+				if ($subkey != 'actif') {
+					if($titre_trt==false){
+						$titre .= '<th>'.$subkey.'</th>';
+					}
+					//echo "<br>";
+					//echo "<br>";
+					//var_dump($subelement);
+					$out .= '<td>'.$subelement.'</td>' ;
+				}
+			}
+			if($titre_trt==false){
+				$titre.= '<th>Mod</th><th>Actif</th></tr>';
+			}
+			$titre_trt= true;
+			$out .= $this->modif($element);
+			$out .= $this->action($element);
+	
+			//				if($type == "utilisateur"){
+			//                  $out .= '<td>'.$element->utilisateur.'</td></tr>';
+			//                }
+			//
+			//                if($type == "livre"){
+			//                  $out .= '<td>'.$element->LivreID.'</td></tr>';
+			//                }
+	
+		}
+		$out = '<table id="'.$this->table.'">'.$titre.$out.'</table>';
+			
+	
+		return $out;
+	}
     
 }
 

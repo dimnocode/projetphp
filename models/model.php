@@ -116,6 +116,51 @@ class Model{
 
 	}
 	
+	public function read($fields=null, $post=null){
+	
+		if($fields==null){
+			$fields = '*';
+		}
+	
+	
+	
+		$test='';
+		foreach($post as $key => $val)
+		{
+			if($test!=''){
+				$test.=' and';
+			} else {
+				$test.=' where';
+			}
+			$test.=" upper(".$key.") like upper('%".$val."%') ";
+		}
+	
+		if ($this->id== null){
+	
+			$sql= 'SELECT '.$fields.' from '.$this->table.$test;
+		}
+	
+		//else{
+		//	$sql= 'SELECT '.$fields.' from '.$this->table .'  where '.$this->PK.' = '.$this->id ;
+		//}
+	
+	
+		try {
+			// On envois la requète
+			$select = $this->connection->query($sql);
+			//echo $sql;
+			// On indique que nous utiliserons les résultats en tant qu'objet
+			$select->setFetchMode(PDO::FETCH_OBJ);
+			$this->data = new stdClass();
+			$this->data = $select->fetchAll();
+	
+		} catch ( Exception $e ) {
+			echo 'Une erreur est survenue lors de la récupération des créateurs';
+		}
+	
+	}
+	
+	
 	static function load($name){
 		require ($name.'.php');
 		return new $name();
