@@ -69,7 +69,16 @@ class utilisateur extends Model{
 		$sql= "call utilisateur_desactiv ('".$Utilisateur."') ";
 		parent::getConnection()->query($sql);
 	}
- 
+    
+    function utilisateur_create($Utilisateur){
+		$sql= "call utilisateur_create ('".$Utilisateur."') ";
+		parent::getConnection()->query($sql);
+	}
+    
+    function utilisateur_update($Utilisateur){
+		$sql= "call utilisateur_update ('".$Utilisateur."') ";
+		parent::getConnection()->query($sql);
+	}
 }
 
 ?>

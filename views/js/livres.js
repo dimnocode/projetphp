@@ -6,10 +6,9 @@ var  clicActive = function(){
         $destination='../controllers/control_livre_activ.php';
     }
 	var elem = $( this );
-	$.post( $destination, { livre : $(this).parent().parent().find("#LivreID").html()} )
+	$.post( $destination, { livre : $(this).parent().parent().find("td#LivreID").html()} )
   			.done(function( data ) {
-                    alert(data);
-	    			elem.empty();
+                    elem.empty();
 	    			elem.html(data);
                    
   					}

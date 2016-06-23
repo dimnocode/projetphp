@@ -40,5 +40,15 @@ class livre extends Model {
 		parent::getConnection()->query($sql);
 	}
     
+    function livre_create($livre){
+		$sql= "call livre_create ('".$livre."') ";
+		parent::getConnection()->query($sql);
+	}
+    
+    function livre_update($livre){
+		$sql= "call livre_update ('".$livre."') ";
+		parent::getConnection()->query($sql);
+	}
+    
 }
 ?>

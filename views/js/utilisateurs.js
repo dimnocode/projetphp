@@ -8,8 +8,7 @@ var  clicActive = function(){
 	var elem = $( this );
 	$.post( $destination, { utilisateur : $(this).parent().parent().find("#utilisateur").html()} )
   			.done(function( data ) {
-                    alert(data);
-	    			elem.empty();
+                   	elem.empty();
 	    			elem.html(data);
   					}
   				);

@@ -5,8 +5,10 @@
 
 
 
+
+
 <footer>
-	Par Krasucki Dimitri<a href="#header" >Haut de page</a>
+	<p>Par Abe Jean-Michel & Krasucki Dimitri<a href="#header" ></p>
 </footer>
 </div>
 </body>
