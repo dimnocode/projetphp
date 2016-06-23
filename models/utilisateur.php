@@ -36,7 +36,7 @@ class utilisateur extends Model{
     
     static function auth($UTILISATEUR, $CODE){
 		//$utilisateurs=Model::load("utilisateurs");
-    	$utilisateurs = new utilisateur;
+    	$utilisateurs = new utilisateur;    	
 		$utilisateurs->read('code, actif',array('utilisateur' => $UTILISATEUR ));
 		if(count($utilisateurs->data) >0 && $utilisateurs->data[0]->code==$CODE && $utilisateurs->data[0]->actif==1){
 			return true;
