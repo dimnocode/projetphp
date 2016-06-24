@@ -94,7 +94,7 @@ class Model{
                     }
 				}
 				if($titre_trt==false){
-					$titre.= '<th>Mod</th><th>Actif</th></tr>';
+					$titre.= '<th>Mod</th><th>Action</th></tr>';
 				}
 				$titre_trt= true;
                 $out .= $this->modif($element);

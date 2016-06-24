@@ -46,6 +46,7 @@
     $utilisateurs->list(null, $_POST);
     echo $utilisateurs->rtv_Table("utilisateur");
    
-    
+    require 'utilisateur_form.php';
+
 	require 'bas.php';
 ?>

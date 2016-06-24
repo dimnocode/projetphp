@@ -23,9 +23,11 @@ class livre extends Model {
         }else{
             $checked = "";  
         }
-        return "<td><input type=\"checkbox\" id=\"actif\" name=\"actif\" value=\"actif\" " .$checked." ></td>";
+        return "<td><input type=\"number\" id=\"nbarticle\" name=\"nbarticle\" value=\"1\" min=\"1\" max=\"100\"> 
+                <input type=\"button\" value=\"Ajouter\"</td>";
 
     }
+    
     
 
 
