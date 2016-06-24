@@ -24,7 +24,7 @@ class livre extends Model {
             $checked = "";  
         }
         return "<td><input type=\"number\" id=\"nbarticle\" name=\"nbarticle\" value=\"1\" min=\"1\" max=\"100\"> 
-                <input type=\"button\" value=\"Ajouter\"</td>";
+                <input id=\"btajout\" type=\"button\" value=\"Ajouter\"</td>";
 
     }
     
