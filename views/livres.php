@@ -21,6 +21,8 @@
 
 
 <?php
+    require 'livres_form.php';
+
     $livres=Model::load("livre");
 
     //Si le champs actif est setté

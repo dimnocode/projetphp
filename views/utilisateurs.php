@@ -19,8 +19,9 @@
     <input type="submit" value="Envoyer">
 </form>
 
-
 <?php
+    require 'utilisateurs_form.php';
+
     $utilisateurs=Model::load("utilisateur");
      
         //Si le champs actif est setté
@@ -46,7 +47,7 @@
     $utilisateurs->list(null, $_POST);
     echo $utilisateurs->rtv_Table("utilisateur");
    
-    require 'utilisateur_form.php';
+    
 
 	require 'bas.php';
 ?>
