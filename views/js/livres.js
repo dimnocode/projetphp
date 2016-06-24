@@ -17,8 +17,9 @@ var  clicActive = function(){
 
 var clicAjout = function(){
 	var elem = $( this );
-	$.post( '../controllers/control_livre_ajout.php', {livre : $(this).parent().parent().find("td#LivreID").html(),quantite : $(this).parent().parent().find("td#nbarticle").value()})
-  			.done(function() {
+	$.post( '../controllers/control_livre_ajout.php', {livre : $(this).parent().parent().find("td#LivreID").html(),quantite : $(this).parent().parent().find("input#nbarticle").val()})
+  			.done(function(data) {
+  					alert(data);
 	    			elem.html('0');
   					}
   				);
