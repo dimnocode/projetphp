@@ -30,11 +30,9 @@ $(document).on('click','#livres #btajout',clicAjout);
 
 var  clicModif = function(){
 
-	if($(this).attr('checked')){
-		$destination='../controllers/control_livre_desactiv.php';
-	} else {
-        $destination='../controllers/control_livre_activ.php';
-    }
+	
+$destination='../controllers/find_livre.php';
+    
 	var elem = $( this );
 	$.post( $destination, { livre : $(this).parent().parent().find("td#LivreID").html()} )
   			.done(function( data ) {
