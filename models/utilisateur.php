@@ -27,7 +27,7 @@ class utilisateur extends Model{
         }else{
             $checked = "";  
         }
-        return "<td><input type=\"checkbox\" id=\"actif\" name=\"actif\" value=\"actif\"" .$checked." ></td>";
+        return "<td><input type=\"checkbox\" id=\"actif\" name=\"actif\" value=\"actif\" " .$checked." ></td>";
 
     }
     

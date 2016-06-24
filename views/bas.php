@@ -8,7 +8,7 @@
 
 
 <footer>
-	<p>Par Abe Jean-Michel & Krasucki Dimitri<a href="#header" ></p>
+	<p>Par Abe Jean-Michel & Krasucki Dimitri</p>
 </footer>
 </div>
 </body>

@@ -13,7 +13,8 @@ class livre extends Model {
 	var $data ;
     
     public function modif($element){
-         return "<td><input type=\"submit\" value=\"Mod\"></td>";
+         return "<td><button type=\"button\" class=\"btn btn-primary btn-sm\" data-toggle=\"modal\" data-target=\"#myModal\">Modifier
+</button></td>";
     }
     
     public function action($element){        
@@ -24,7 +25,7 @@ class livre extends Model {
             $checked = "";  
         }
         return "<td><input type=\"number\" id=\"nbarticle\" name=\"nbarticle\" value=\"1\" min=\"1\" max=\"100\"> 
-                <input id=\"btajout\" type=\"button\" value=\"Ajouter\"</td>";
+                <input id=\"btajout\" type=\"button\" value=\"Ajouter\"></td>";
 
     }
     
