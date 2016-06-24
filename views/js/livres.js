@@ -19,15 +19,14 @@ var clicAjout = function(){
 	var elem = $( this );
 	$.post( '../controllers/control_livre_ajout.php', {livre : $(this).parent().parent().find("td#LivreID").html(),quantite : $(this).parent().parent().find("input#nbarticle").val()})
   			.done(function(data) {
-  					alert(data);
-	    			elem.html('0');
+  					//on remet la quantité à 1 pour le prochain ajout au panier
+  					elem.parent().parent().find("input#nbarticle").val(1);
   					}
   				);
 }
 
 $(document).on('click','#livres #actif',clicActive);
 $(document).on('click','#livres #btajout',clicAjout);
-//$('#livres #actif').on('click',clicActive);
 
 var  clicModif = function(){
 
