@@ -17,7 +17,7 @@ var  clicActive = function(){
 
 var clicAjout = function(){
 	var elem = $( this );
-	$.post( '../controllers/control_livre_ajout.php', {livre : $(this).parent().parent().find("td#LivreID").html(),quantite : $(this).parent().parent().find("input#nbarticle").val()})
+	$.post( '../controllers/control_livre_ajout.php', {livre : $(this).parent().parent().parent().find("td#LivreID").html(),quantite : $(this).parent().parent().find("input#nbarticle").val()})
   			.done(function(data) {
   					//on remet la quantité à 1 pour le prochain ajout au panier
   					elem.parent().parent().find("input#nbarticle").val(1);
