@@ -81,6 +81,15 @@ class utilisateur extends Model{
         $sql= "call utilisateur_update ('".$Utilisateur['utilisateur']."', '".$Utilisateur['code']."', '".$Utilisateur['nom']."', '".$Utilisateur['prenom']."', ".$Utilisateur['admin'].", ".$Utilisateur['actif'].") ";
         parent::getConnection()->query($sql);
 	}
+    
+    function utilisateur_exist($Utilisateur){
+        $con = parent::getConnection();
+        $stmt = $con->prepare("call utilisateur_exist ('".$Utilisateur['utilisateur']."') "); 
+        $stmt->execute(); 
+        return $stmt->fetch()['total'];
+        
+        
+	}
 }
 
 ?>

@@ -71,8 +71,24 @@ var clicSaveUtilisateur = function () {
 
 };
 
+var userExist = function(){
+
+    
+    $destination = '../controllers/control_utilisateur_exist.php';
+    
+    var elem = $(this);
+    $.post($destination, { utilisateur: $(this).val() }).done(function (data) {
+       if(data == '1'){
+           $('#alertZone').html('<div class="alert alert-danger"><strong>Attention!</strong> L\'utilisateur existe déjà </div>');
+       }else {$('#alertZone').empty();}
+        
+    });
+
+};
+
 
 $(document).on('click', '#utilisateurs #actif', clicActive);
 $(document).on('click', '#utilisateurs #modif', clicModif);
 $(document).on('click', '#utilisateurs #modif', clicAjoutUtilisateur);
 $(document).on('click', '#saveUtilisateur', clicSaveUtilisateur);
+$(document).on('focusout', '#utilisateurInput', userExist);
