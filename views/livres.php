@@ -19,6 +19,9 @@
     <input type="submit" value="Envoyer">
 </form>
 
+<br>
+<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">Ajouter un utilisateur</button>
+<br>
 
 <?php
     require 'livres_form.php';

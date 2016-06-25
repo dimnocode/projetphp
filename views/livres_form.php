@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
 
-                <form>
+                <form id="lform">
                     <div class="form-group">
                         <label for="titre">Titre</label>
                         <input type="text" class="form-control" id="titre" name="titre" placeholder="Titre">
@@ -15,7 +15,7 @@
                     
                     <div class="form-group">
                         <label for="Code">Auteur</label>
-                        <input type="txt" class="form-control" id="auteur" name="auteur" placeholder="Auteur">
+                        <input type="text" class="form-control" id="auteur" name="auteur" placeholder="Auteur">
                     </div>
                     
                     <div class="form-group">
@@ -32,7 +32,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" id="saveUtilisateur" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>

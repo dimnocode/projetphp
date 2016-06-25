@@ -16,8 +16,7 @@ class utilisateur extends Model{
     
     
     public function modif($element){
-        return "<td><button type=\"button\" class=\"btn btn-primary btn-sm\" data-toggle=\"modal\" data-target=\"#myModal\">Modifier
-</button></td>";
+        return "<td><input type=\"button\" id=\"modif\" class=\"btn btn-primary btn-sm\" value=\"Modifier\"></td>";
     }
     
     public function action($element){        
@@ -72,12 +71,14 @@ class utilisateur extends Model{
 	}
     
     function utilisateur_create($Utilisateur){
-		$sql= "call utilisateur_create ('".$Utilisateur."') ";
+        var_dump($Utilisateur);
+		$sql= "call utilisateur_create ('".$Utilisateur['utilisateur']."', '".$Utilisateur['code']."', '".$Utilisateur['nom']."', '".$Utilisateur['prenom']."', ".$Utilisateur['admin'].", ".$Utilisateur['actif'].") ";
+        echo $sql;
 		parent::getConnection()->query($sql);
 	}
     
     function utilisateur_update($Utilisateur){
-		$sql= "call utilisateur_update ('".$Utilisateur."') ";
+		$sql= "call utilisateur_update ('".$Utilisateur['utilisateur']."', '".$Utilisateur['code']."', '".$Utilisateur['nom']."', '".$Utilisateur['prenom']."') ";
 		parent::getConnection()->query($sql);
 	}
 }

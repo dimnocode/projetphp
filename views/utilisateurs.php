@@ -19,8 +19,13 @@
     <input type="submit" value="Envoyer">
 </form>
 
+<br>
+<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">Ajouter un utilisateur</button>
+<br>
+
+<div id="loadForm"> <?php require('utilisateurs_form.php'); ?></div>
 <?php
-    require 'utilisateurs_form.php';
+    
 
     $utilisateurs=Model::load("utilisateur");
      
