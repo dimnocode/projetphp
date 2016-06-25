@@ -16,7 +16,7 @@ class utilisateur extends Model{
     
     
     public function modif($element){
-        return "<td><input type=\"button\" id=\"modif\" class=\"btn btn-primary btn-sm\" value=\"Modifier\"></td>";
+        return "<td><input type=\"button\" id=\"modif\" class=\"btn btn-primary btn-xs\" value=\"...\"></td>";
     }
     
     public function action($element){        

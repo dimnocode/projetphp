@@ -8,15 +8,15 @@
     $last_post = $_POST;
 ?>
 
-<form method="post" action="">
-    <input type="text" name="titre" placeholder="Titre" value="<?php if(isset($last_post["titre"])){ echo $last_post["titre"];} ?>">
-    <input type="text" name="auteur" placeholder="Auteur" value="<?php if(isset($last_post["auteur"])){ echo $last_post["auteur"];} ?>">
+<form method="post" action="" class="form-inline">
+    <input type="text" class="form-control" name="titre" placeholder="Titre" value="<?php if(isset($last_post["titre"])){ echo $last_post["titre"];} ?>">
+    <input type="text" class="form-control" name="auteur" placeholder="Auteur" value="<?php if(isset($last_post["auteur"])){ echo $last_post["auteur"];} ?>">
     
-    <input type="radio" name="actif" value="tous"       <?php if(isset($last_post["actif"]) && $last_post["actif"] == "tous"){ echo 'checked';} ?>          > Tous     
-    <input type="radio" name="actif" value="actifs"     <?php if(!isset($last_post["actif"]) || $last_post["actif"] == "actifs"){ echo 'checked';} ?>       > Disponibles              
-    <input type="radio" name="actif" value="inactifs"   <?php if(isset($last_post["actif"]) && $last_post["actif"] == "inactifs"){ echo 'checked';} ?>      > Indisponibles  
+    <input type="radio"  name="actif" value="tous"       <?php if(isset($last_post["actif"]) && $last_post["actif"] == "tous"){ echo 'checked';} ?>          > Tous     
+    <input type="radio"  name="actif" value="actifs"     <?php if(!isset($last_post["actif"]) || $last_post["actif"] == "actifs"){ echo 'checked';} ?>       > Disponibles              
+    <input type="radio"  name="actif" value="inactifs"   <?php if(isset($last_post["actif"]) && $last_post["actif"] == "inactifs"){ echo 'checked';} ?>      > Indisponibles  
     
-    <input type="submit" value="Envoyer">
+    <input type="submit" class="btn btn-primary btn-sm" value="Rechercher">
 </form>
 
 <br>

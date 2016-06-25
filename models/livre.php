@@ -13,8 +13,7 @@ class livre extends Model {
 	var $data ;
     
     public function modif($element){
-         return "<td><button type=\"button\" class=\"btn btn-primary btn-sm\" data-toggle=\"modal\" data-target=\"#myModal\">Modifier
-</button></td>";
+         return "<td><button type=\"button\" class=\"btn btn-primary btn-xs\">...</button></td>";
     }
     
     public function action($element){        
@@ -24,8 +23,8 @@ class livre extends Model {
         }else{
             $checked = "";  
         }
-        return "<td><input type=\"number\" id=\"nbarticle\" name=\"nbarticle\" value=\"1\" min=\"1\" max=\"100\"> 
-                <input id=\"btajout\" type=\"button\" value=\"Ajouter\"></td>";
+        return "<td><form class=\"form-inline\"><input type=\"number\" class=\"form-control input-sm\" id=\"nbarticle\" name=\"nbarticle\" value=\"1\" min=\"1\" max=\"100\"> 
+                <input id=\"btajout\" type=\"button\" class=\"btn btn-warning btn-xs\" value=\"Ajouter au panier\"></form></td>";
 
     }
     

@@ -109,7 +109,7 @@ class Model{
 //                }
                 
 			}
-			$out = '<table id="'.$this->table.'">'.$titre.$out.'</table>';
+			$out = '<table id="'.$this->table.'" class="table table-striped">'.$titre.$out.'</table>';
 			
 
 			return $out;
