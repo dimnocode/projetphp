@@ -26,7 +26,6 @@
 <div id="loadForm"> <?php require('utilisateurs_form.php'); ?></div>
 <?php
     
-
     $utilisateurs=Model::load("utilisateur");
      
         //Si le champs actif est setté

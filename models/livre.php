@@ -44,7 +44,7 @@ class livre extends Model {
 	}
     
     function livre_create($livre){
-		$sql= "call livre_create ('".$livre."') ";
+		$sql= "call livre_create ('".$livre['titre']."', '".$livre['auteur']."', ".$livre['prix_unitaire'].", ".$livre['actif'].")";
 		parent::getConnection()->query($sql);
 	}
     

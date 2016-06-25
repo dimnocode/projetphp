@@ -40,18 +40,6 @@ var clicModif = function () {
 //Afficher le formulaire d'ajout d'utilisateur
 var clicAjoutUtilisateur = function () {
 
-
-    $destination = '../views/utilisateur_form.php';
-
-    var elem = $(this);
-    $.post($destination, {
-            utilisateur: $(this).parent().parent().find("td#utilisateur").html()
-        })
-        .done(function (data) {
-
-            elem.empty();
-            elem.html(data);
-        });
     $('#myModal').modal('show');
 
 };
@@ -64,8 +52,6 @@ var clicAjoutUtilisateur = function () {
 //Sauvegarder utilisateur
 var clicSaveUtilisateur = function () {
 
-    //$('form').submit(function (e) {
-        //e.preventDefault();
         $.ajax({
             url: '../controllers/control_utilisateur_create.php',
             type: 'post',
@@ -74,8 +60,6 @@ var clicSaveUtilisateur = function () {
                 alert("Form sent")
             }
         });
-    //});
-
 
     $('#myModal').modal('hide');
 
@@ -86,3 +70,6 @@ $(document).on('click', '#utilisateurs #actif', clicActive);
 $(document).on('click', '#utilisateurs #modif', clicModif);
 $(document).on('click', '#utilisateurs #modif', clicAjoutUtilisateur);
 $(document).on('click', '#saveUtilisateur', clicSaveUtilisateur);
+
+$(document).on('click', '#livres #modif', clicAjoutUtilisateur);
+$(document).on('click', '#saveLivre', clicSaveUtilisateur);

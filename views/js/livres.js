@@ -43,4 +43,34 @@ $destination='../controllers/find_livre.php';
   				);
 };
 
-$(document).on('click','#livres #modif',clicModif);
+
+//Afficher le formulaire d'ajout de livres
+var clicAjoutLivre = function () {
+
+    $('#myModal').modal('show');
+
+};
+
+
+
+
+
+
+//Sauvegarder livre
+var clicSaveLivre = function () {
+
+        $.ajax({
+            url: '../controllers/control_livre_create.php',
+            type: 'post',
+            data: $('#lform').serialize(),
+            success: function () {
+                alert("Form sent")
+            }
+        });
+
+    $('#myModal').modal('hide');
+
+};
+
+$(document).on('click', '#livres #modif', clicAjoutLivre);
+$(document).on('click', '#saveLivre', clicSaveLivre);

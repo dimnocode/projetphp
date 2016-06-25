@@ -20,11 +20,11 @@
 </form>
 
 <br>
-<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">Ajouter un utilisateur</button>
+<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">Ajouter un livre</button>
 <br>
 
+<div id="loadForm"> <?php require('livres_form.php'); ?></div>
 <?php
-    require 'livres_form.php';
 
     $livres=Model::load("livre");
 

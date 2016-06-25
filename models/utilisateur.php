@@ -78,8 +78,8 @@ class utilisateur extends Model{
 	}
     
     function utilisateur_update($Utilisateur){
-		$sql= "call utilisateur_update ('".$Utilisateur['utilisateur']."', '".$Utilisateur['code']."', '".$Utilisateur['nom']."', '".$Utilisateur['prenom']."') ";
-		parent::getConnection()->query($sql);
+        $sql= "call utilisateur_update ('".$Utilisateur['utilisateur']."', '".$Utilisateur['code']."', '".$Utilisateur['nom']."', '".$Utilisateur['prenom']."', ".$Utilisateur['admin'].", ".$Utilisateur['actif'].") ";
+        parent::getConnection()->query($sql);
 	}
 }
 
