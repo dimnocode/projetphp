@@ -10,17 +10,17 @@
                 <form id="lform">
                     <div class="form-group">
                         <label for="titre">Titre</label>
-                        <input type="text" class="form-control" id="titre" name="titre" placeholder="Titre">
+                        <input type="text" class="form-control" id="titre" name="titre" placeholder="Titre" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="Code">Auteur</label>
-                        <input type="text" class="form-control" id="auteur" name="auteur" placeholder="Auteur">
+                        <input type="text" class="form-control" id="auteur" name="auteur" placeholder="Auteur" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="exampleInputEmail1">Prix unitaire</label>
-                        <input type="number" class="form-control" id="prix_unitaire" name="prix_unitaire" placeholder="Prix unitaire">
+                        <input type="number" class="form-control" id="prix_unitaire" name="prix_unitaire" placeholder="Prix unitaire" required>
                     </div>
                                     
                     <div class="checkbox">

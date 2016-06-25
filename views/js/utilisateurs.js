@@ -52,16 +52,22 @@ var clicAjoutUtilisateur = function () {
 //Sauvegarder utilisateur
 var clicSaveUtilisateur = function () {
 
-        $.ajax({
+    var $myForm = $('#uform');
+    
+    if ($myForm[0].checkValidity()) {
+         $.ajax({
             url: '../controllers/control_utilisateur_create.php',
             type: 'post',
             data: $('#uform').serialize(),
             success: function () {
-                alert("Form sent")
+                alert("Form sent");
             }
         });
 
-    $('#myModal').modal('hide');
+        $('#myModal').modal('hide');
+    }else {$('<input type="submit">').hide().appendTo($myForm).click().remove();}
+
+
 
 };
 
@@ -70,6 +76,3 @@ $(document).on('click', '#utilisateurs #actif', clicActive);
 $(document).on('click', '#utilisateurs #modif', clicModif);
 $(document).on('click', '#utilisateurs #modif', clicAjoutUtilisateur);
 $(document).on('click', '#saveUtilisateur', clicSaveUtilisateur);
-
-$(document).on('click', '#livres #modif', clicAjoutUtilisateur);
-$(document).on('click', '#saveLivre', clicSaveUtilisateur);

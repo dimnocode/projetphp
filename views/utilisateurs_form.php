@@ -23,22 +23,23 @@
 
                         <div class="form-group">
                             <label for="utilisateur">Utilisateur</label>
-                            <input type="text" class="form-control" id="utilisateur" name="utilisateur" placeholder="Utilisateur">
+                            <input type="text" class="form-control" id="utilisateur" name="utilisateur" placeholder="Utilisateur" pattern=".{4,}" required>
+                            <p class="help-block">Minimum 4 caractères</p>
                         </div>
 
                         <div class="form-group">
                             <label for="code">Code</label>
-                            <input type="text" class="form-control" id="code" name="code" placeholder="Code">
+                            <input type="text" class="form-control" id="code" name="code" placeholder="Code" required>
                         </div>
 
                         <div class="form-group">
                             <label for="nom">Nom</label>
-                            <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
+                            <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom" required>
                         </div>
 
                         <div class="form-group">
                             <label for="prenom">Prénom</label>
-                            <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prénom">
+                            <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prénom" required>
                         </div>
 
                     </form>
