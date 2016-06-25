@@ -20,11 +20,15 @@ class livre extends Model {
         
         if($element->actif == 1){
             $checked = "checked";
-        }else{
-            $checked = "";  
+            $panier = "<form class=\"form-inline\"><input type=\"number\" class=\"form-control input-sm\" id=\"nbarticle\" name=\"nbarticle\" value=\"1\" min=\"1\" max=\"100\"> 
+                <input id=\"btajout\" type=\"button\" class=\"btn btn-warning btn-xs\" value=\"Ajouter au panier\"></form>";
+        }else{ 
+            $checked = "";
+            $panier = "<span class=\"label label-danger\">Indisponible</span>";
         }
-        return "<td><form class=\"form-inline\"><input type=\"number\" class=\"form-control input-sm\" id=\"nbarticle\" name=\"nbarticle\" value=\"1\" min=\"1\" max=\"100\"> 
-                <input id=\"btajout\" type=\"button\" class=\"btn btn-warning btn-xs\" value=\"Ajouter au panier\"></form></td>";
+        
+        
+        return "<td>".$panier."</td>";
 
     }
     
