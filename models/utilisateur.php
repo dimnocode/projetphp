@@ -72,7 +72,7 @@ class utilisateur extends Model{
 	}
     
     function utilisateur_create($utilisateur){
-		$sql= "call utilisateur_create ('".utilisateur['utilisateur']."', '".$utilisateur['code']."', '".$utilisateur['nom']."', '".$utilisateur['prenom']."', ".$utilisateur['admin'].", ".$utilisateur['actif'].") ";
+		$sql= "call utilisateur_create ('".$utilisateur['utilisateur']."', '".$utilisateur['code']."', '".$utilisateur['nom']."', '".$utilisateur['prenom']."', ".$utilisateur['admin'].", ".$utilisateur['actif'].") ";
 		parent::getConnection()->query($sql);
 	}
     
