@@ -108,9 +108,14 @@ var userExist = function(){
 
 };
 
+var refresh = function(){
+    $('#refresh').click();
+}
 
 $(document).on('click', '#utilisateurs #actif', clicActive);
 $(document).on('click', '#utilisateurs #modif', clicModif);
 $(document).on('click', '#ajoutUtilisateur', clicAjoutUtilisateur);
 $(document).on('click', '#saveUtilisateur', clicSaveUtilisateur);
 $(document).on('focusout', '#utilisateurInput', userExist);
+
+$(document).on('click', '.searchForm', refresh);
