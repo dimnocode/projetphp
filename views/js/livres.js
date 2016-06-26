@@ -29,6 +29,7 @@ var clicAjoutPanier = function(){
 //Modification livre
 var clicModifLivre = function () {
     action='update';
+    $('#lform')[0].reset();
     var $id = $(this).parent().parent().find("td#LivreID").html();
     $.ajax({
             type: 'POST',

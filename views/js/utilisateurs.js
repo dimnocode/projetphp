@@ -18,6 +18,7 @@ var clicActive = function () {
 //Modification utilisateur
 var clicModif = function () {
     action='update';
+    $('#uform')[0].reset();
     $.ajax({
             type: 'POST',
             url: '../controllers/control_utilisateur_find.php',
