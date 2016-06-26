@@ -11,9 +11,7 @@ var clicActive = function () {
     $.post($destination, {
         utilisateur: $(this).parent().parent().find("td#utilisateur").html()
     }).done(function (data) {
-        //Fonction .done peut être retirée
-        //elem.empty();
-        //elem.html(data);
+        $('#refresh').click();
     });
 };
 
