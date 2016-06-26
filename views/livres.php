@@ -16,11 +16,11 @@
     <input type="radio"  name="actif" value="actifs"     <?php if(!isset($last_post["actif"]) || $last_post["actif"] == "actifs"){ echo 'checked';} ?>       > Disponibles              
     <input type="radio"  name="actif" value="inactifs"   <?php if(isset($last_post["actif"]) && $last_post["actif"] == "inactifs"){ echo 'checked';} ?>      > Indisponibles  
     
-    <input type="submit" class="btn btn-primary btn-sm" value="Rechercher">
+    <input type="submit" id="refresh" class="btn btn-primary btn-sm" value="Rechercher">
 </form>
 
 <br>
-<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">Ajouter un livre</button>
+<button type="button" id="ajoutLivre" class="btn btn-primary btn-sm" >Ajouter un livre</button>
 <br>
 
 <div id="loadForm"> <?php require('livres_form.php'); ?></div>

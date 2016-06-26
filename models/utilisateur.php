@@ -61,36 +61,36 @@ class utilisateur extends Model{
 	}
     
     
-    function utilisateur_activ($Utilisateur){
-		$sql= "call utilisateur_activ ('".$Utilisateur."') ";
+    function utilisateur_activ($utilisateur){
+		$sql= "call utilisateur_activ ('".$utilisateur."') ";
 		parent::getConnection()->query($sql);
 	}
 
-	function utilisateur_desactiv($Utilisateur){
-		$sql= "call utilisateur_desactiv ('".$Utilisateur."') ";
+	function utilisateur_desactiv($utilisateur){
+		$sql= "call utilisateur_desactiv ('".$utilisateur."') ";
 		parent::getConnection()->query($sql);
 	}
     
-    function utilisateur_create($Utilisateur){
-		$sql= "call utilisateur_create ('".$Utilisateur['utilisateur']."', '".$Utilisateur['code']."', '".$Utilisateur['nom']."', '".$Utilisateur['prenom']."', ".$Utilisateur['admin'].", ".$Utilisateur['actif'].") ";
+    function utilisateur_create($utilisateur){
+		$sql= "call utilisateur_create ('".utilisateur['utilisateur']."', '".$utilisateur['code']."', '".$utilisateur['nom']."', '".$utilisateur['prenom']."', ".$utilisateur['admin'].", ".$utilisateur['actif'].") ";
 		parent::getConnection()->query($sql);
 	}
     
-    function utilisateur_update($Utilisateur){
-        $sql= "call utilisateur_update ('".$Utilisateur['utilisateur']."', '".$Utilisateur['code']."', '".$Utilisateur['nom']."', '".$Utilisateur['prenom']."', ".$Utilisateur['admin'].", ".$Utilisateur['actif'].") ";
+    function utilisateur_update($utilisateur){
+        $sql= "call utilisateur_update ('".$utilisateur['utilisateur']."', '".$utilisateur['code']."', '".$utilisateur['nom']."', '".$utilisateur['prenom']."', ".$utilisateur['admin'].", ".$utilisateur['actif'].") ";
         parent::getConnection()->query($sql);
 	}
     
-    function utilisateur_exist($Utilisateur){
+    function utilisateur_exist($utilisateur){
         $con = parent::getConnection();
-        $stmt = $con->prepare("call utilisateur_exist ('".$Utilisateur['utilisateur']."') "); 
+        $stmt = $con->prepare("call utilisateur_exist ('".$utilisateur['utilisateur']."') "); 
         $stmt->execute(); 
         return $stmt->fetch()['total'];       
 	}
     
-    function utilisateur_find($Utilisateur){
+    function utilisateur_find($utilisateur){
         $con = parent::getConnection();
-        $stmt = $con->prepare("call utilisateur_find ('".$Utilisateur['utilisateur']."') "); 
+        $stmt = $con->prepare("call utilisateur_find ('".$utilisateur['utilisateur']."') "); 
         $stmt->execute(); 
         return json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));       
 	}

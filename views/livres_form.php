@@ -8,24 +8,25 @@
             <div class="modal-body">
 
                 <form id="lform">
+                    <input type="hidden" name="LivreID" id="LivreIDInput">
                     <div class="form-group">
                         <label for="titre">Titre</label>
-                        <input type="text" class="form-control" id="titre" name="titre" placeholder="Titre" required>
+                        <input type="text" class="form-control" id="titreInput" name="titre" placeholder="Titre" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="Code">Auteur</label>
-                        <input type="text" class="form-control" id="auteur" name="auteur" placeholder="Auteur" required>
+                        <input type="text" class="form-control" id="auteurInput" name="auteur" placeholder="Auteur" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="exampleInputEmail1">Prix unitaire</label>
-                        <input type="number" class="form-control" id="prix_unitaire" name="prix_unitaire" placeholder="Prix unitaire" required>
+                        <input type="number" class="form-control" id="prix_unitaireInput" name="prix_unitaire" placeholder="Prix unitaire" required>
                     </div>
                                     
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" id="actif" name="actif"> Actif
+                            <input type="checkbox" id="actifCheck" name="actif"> Actif
                         </label>
                     </div>
                 </form>

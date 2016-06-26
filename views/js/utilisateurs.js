@@ -56,8 +56,7 @@ var clicModif = function () {
 //Afficher le formulaire d'ajout d'utilisateur
 var clicAjoutUtilisateur = function () {
      action='add';
-    
-    
+    $('#utilisateurInput').prop('disabled', false);    
     $('#uform')[0].reset();  
     
     $('#myModal').modal('show');
@@ -83,11 +82,13 @@ var clicSaveUtilisateur = function () {
             type: 'post',
             data: $('#uform').serialize(),
             success: function () {
-                alert($('#uform').serialize());
+                //alert($('#uform').serialize());
+                $('#refresh').click();
             }
         });
 
         $('#myModal').modal('hide');
+        
     }else {$('<button type="submit">').hide().appendTo($myForm).click().remove();}
 
 

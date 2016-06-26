@@ -13,7 +13,7 @@ class livre extends Model {
 	var $data ;
     
     public function modif($element){
-         return "<td><button type=\"button\" class=\"btn btn-primary btn-xs\">...</button></td>";
+         return "<td><button type=\"button\" id=\"modif\" class=\"btn btn-primary btn-xs\">...</button></td>";
     }
     
     public function action($element){        
@@ -52,8 +52,15 @@ class livre extends Model {
 	}
     
     function livre_update($livre){
-		$sql= "call livre_update ('".$livre['titre']."', '".$livre['auteur']."', ".$livre['prix_unitaire'].", ".$livre['actif'].")";
+		$sql= "call livre_update (".$livre['LivreID'].", '".$livre['titre']."', '".$livre['auteur']."', ".$livre['prix_unitaire'].", ".$livre['actif'].")";
 		parent::getConnection()->query($sql);
+	}
+    
+    function livre_find($livre){
+        $con = parent::getConnection();
+        $stmt = $con->prepare("call livre_find ('".$livre['LivreID']."') "); 
+        $stmt->execute(); 
+        return json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));       
 	}
     
 }

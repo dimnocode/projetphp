@@ -16,7 +16,7 @@
     <input type="radio" name="actif" value="actifs"     <?php if(!isset($last_post["actif"]) || $last_post["actif"] == "actifs"){ echo 'checked';} ?>       > Actifs              
     <input type="radio" name="actif" value="inactifs"   <?php if(isset($last_post["actif"]) && $last_post["actif"] == "inactifs"){ echo 'checked';} ?>      > Incatifs      
 
-    <input type="submit" class="btn btn-primary btn-sm" value="Rechercher">
+    <input type="submit" id="refresh" class="btn btn-primary btn-sm" value="Rechercher">
 </form>
 
 <br>
