@@ -60,6 +60,7 @@ class utilisateur extends Model{
 
 	}
     
+    
     function utilisateur_activ($Utilisateur){
 		$sql= "call utilisateur_activ ('".$Utilisateur."') ";
 		parent::getConnection()->query($sql);
@@ -71,9 +72,7 @@ class utilisateur extends Model{
 	}
     
     function utilisateur_create($Utilisateur){
-        var_dump($Utilisateur);
 		$sql= "call utilisateur_create ('".$Utilisateur['utilisateur']."', '".$Utilisateur['code']."', '".$Utilisateur['nom']."', '".$Utilisateur['prenom']."', ".$Utilisateur['admin'].", ".$Utilisateur['actif'].") ";
-        echo $sql;
 		parent::getConnection()->query($sql);
 	}
     
@@ -86,9 +85,14 @@ class utilisateur extends Model{
         $con = parent::getConnection();
         $stmt = $con->prepare("call utilisateur_exist ('".$Utilisateur['utilisateur']."') "); 
         $stmt->execute(); 
-        return $stmt->fetch()['total'];
-        
-        
+        return $stmt->fetch()['total'];       
+	}
+    
+    function utilisateur_find($Utilisateur){
+        $con = parent::getConnection();
+        $stmt = $con->prepare("call utilisateur_find ('".$Utilisateur['utilisateur']."') "); 
+        $stmt->execute(); 
+        return json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));       
 	}
 }
 

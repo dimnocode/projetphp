@@ -20,7 +20,7 @@
 </form>
 
 <br>
-<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">Ajouter un utilisateur</button>
+<button type="button" id="ajoutUtilisateur" class="btn btn-primary btn-sm">Ajouter un utilisateur</button>
 <br>
 
 <div id="loadForm"> <?php require('utilisateurs_form.php'); ?></div>

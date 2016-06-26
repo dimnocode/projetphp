@@ -8,8 +8,9 @@ var  clicActive = function(){
 	var elem = $( this );
 	$.post( $destination, { livre : $(this).parent().parent().find("td#LivreID").html()} )
   			.done(function( data ) {
-                    elem.empty();
-	    			elem.html(data);
+                    //Fonction .done peut être retirée
+                    //elem.empty();
+	    			//elem.html(data);
                    
   					}
   				);
@@ -25,9 +26,6 @@ var clicAjout = function(){
   				);
 }
 
-$(document).on('click','#livres #actif',clicActive);
-$(document).on('click','#livres #btajout',clicAjout);
-
 var  clicModif = function(){
 
 	
@@ -36,8 +34,9 @@ $destination='../controllers/find_livre.php';
 	var elem = $( this );
 	$.post( $destination, { livre : $(this).parent().parent().find("td#LivreID").html()} )
   			.done(function( data ) {
-                    elem.empty();
-	    			elem.html(data);
+                    //Fonction .done peut être retirée
+                    //elem.empty();
+	    			//elem.html(data);
                    
   					}
   				);
@@ -50,11 +49,6 @@ var clicAjoutLivre = function () {
     $('#myModal').modal('show');
 
 };
-
-
-
-
-
 
 //Sauvegarder livre
 var clicSaveLivre = function () {
@@ -72,5 +66,7 @@ var clicSaveLivre = function () {
 
 };
 
+$(document).on('click','#livres #actif',clicActive);
+$(document).on('click','#livres #btajout',clicAjout);
 $(document).on('click', '#livres #modif', clicAjoutLivre);
 $(document).on('click', '#saveLivre', clicSaveLivre);

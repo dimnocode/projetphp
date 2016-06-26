@@ -52,7 +52,7 @@ class livre extends Model {
 	}
     
     function livre_update($livre){
-		$sql= "call livre_update ('".$livre."') ";
+		$sql= "call livre_update ('".$livre['titre']."', '".$livre['auteur']."', ".$livre['prix_unitaire'].", ".$livre['actif'].")";
 		parent::getConnection()->query($sql);
 	}
     

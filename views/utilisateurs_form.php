@@ -8,21 +8,8 @@
             <div class="modal-body">
                
                     <form id="uform">
-                        <div id="alertZone">
-                            
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="admin" name="admin"> Admin
-                            </label>
-                        </div>
-
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="actif" name="actif"> Actif
-                            </label>
-                        </div>
-
+                        <div id="alertZone"></div>
+                        
                         <div class="form-group">
                             <label for="utilisateur">Utilisateur</label>
                             <input type="text" class="form-control" id="utilisateurInput" name="utilisateur" placeholder="Utilisateur" pattern=".{4,}" required>
@@ -36,13 +23,28 @@
 
                         <div class="form-group">
                             <label for="nom">Nom</label>
-                            <input type="text" class="form-control" id="nomInput" name="nom" placeholder="Nom" required>
+                            <input type="text" class="form-control" id="nomInput" name="nom" placeholder="Nom" pattern=".{4,}" required>
+                            <p class="help-block">Minimum 4 caractères</p>
                         </div>
 
                         <div class="form-group">
                             <label for="prenom">Prénom</label>
-                            <input type="text" class="form-control" id="prenomInput" name="prenom" placeholder="Prénom" required>
+                            <input type="text" class="form-control" id="prenomInput" name="prenom" placeholder="Prénom" pattern=".{4,}" required>
+                            <p class="help-block">Minimum 4 caractères</p>
                         </div>
+                        
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="adminCheck" name="admin"> Admin
+                            </label>
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="actifCheck" name="actif"> Actif
+                            </label>
+                        </div>
+
 
                     </form>
             </div>
