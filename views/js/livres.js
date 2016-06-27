@@ -20,6 +20,7 @@ var clicAjoutPanier = function(){
 	var elem = $( this );
 	$.post( '../controllers/control_livre_ajoutpanier.php', {livre : $(this).parent().parent().parent().find("td#LivreID").html(),quantite : $(this).parent().parent().find("input#nbarticle").val()})
   			.done(function(data) {
+  					$("#menupanier").effect("bounce", { times:3 }, 700);
   					//on remet la quantité à 1 pour le prochain ajout au panier
   					elem.parent().parent().find("input#nbarticle").val(1);
   					}
@@ -125,6 +126,7 @@ var clicAjoutPanierModal = function(){
 	$.post( '../controllers/control_livre_ajoutpanier.php', {livre : $(this).parent().parent().find("input#LivreIDInput").val(),quantite : 1})
   			.done(function(data) {
   					elem.parent().find("#btclose").trigger("click");
+  					$("#menupanier").effect("bounce", { times:3 }, 700);
   					}
   				);
 }
