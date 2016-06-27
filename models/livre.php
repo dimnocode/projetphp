@@ -29,7 +29,7 @@ class livre extends Model {
         
         
         return "<td>
-        			<button type=\"button\" id=\"modif\" class=\"btn btn-primary btn-xs\">...</button>
+        			<button id=\"modif\" class=\"btn btn-primary btn-xs\"> <span class=\"glyphicon glyphicon-edit\"></span> </button>
         		</td>
         		<td>".$panier."</td>";
 

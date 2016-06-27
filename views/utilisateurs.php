@@ -11,7 +11,7 @@
     <input type="radio" class="searchActif" name="actif" value="tous"> Tous     
     <input type="radio" class="searchActif" name="actif" value="actifs" checked> Actifs              
     <input type="radio" class="searchActif" name="actif" value="inactifs"> Incatifs      
-	<button id="refresh" type="submit" class="btn btn-primary btn-sm">Rechercher</button>
+	<button id="refresh" type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span> Rechercher</button>
     
 </form>
 
@@ -19,7 +19,7 @@
 <?php 
 	$utilisateurs=Model::load("utilisateur");
 	if (utilisateur::admin()){
-		echo '<button type="button" id="ajoutUtilisateur" class="btn btn-primary btn-sm">Ajouter un utilisateur</button><br>';
+		echo '<button type="button" id="ajoutUtilisateur" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> Ajouter un utilisateur</button><br>';
 	}
 ?>
 

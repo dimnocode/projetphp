@@ -29,7 +29,7 @@ class utilisateur extends Model{
             	$checked = "";  
         	}
         	return "<td>
-        				<input type=\"button\" id=\"modif\" class=\"btn btn-primary btn-xs\" value=\"...\">
+        				<button id=\"modif\" class=\"btn btn-primary btn-xs\"> <span class=\"glyphicon glyphicon-edit\"></span> </button>
         			</td>
         			<td>
         				<input type=\"checkbox\" id=\"actif\" name=\"actif\" value=\"actif\" " .$checked." >
