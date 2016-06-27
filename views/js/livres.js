@@ -108,6 +108,8 @@ var clicSearchLivre = function(){
 	
  	.done(function( data ) {
 		$("#listeLivres").html(data);
+		$("table#livres th#actif").hide();
+		$("table#livres td#actif").hide();
 	});
 	return false;
 }

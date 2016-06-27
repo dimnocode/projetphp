@@ -70,29 +70,22 @@ class Model{
 			$titre= '<tr>';
 			$titre_trt= false;
             
-			foreach($this->data as $key => $element){
-               
+			foreach($this->data as $key => $element){              
 				$out .= '<tr>';
 				foreach($element as $subkey => $subelement){
-                    if ($subkey != 'actif') {
                         if($titre_trt==false){
-                            $titre .= '<th>'.$subkey.'</th>';	
+                            $titre .= '<th id="'.$subkey.'">'.$subkey.'</th>';	
                         }
                         $out .= '<td id="'.$subkey.'">'.$subelement.'</td>' ;
-                    }
 				}
-					if($titre_trt==false){
-						$titre.= $this->titresActions();
-					}
-					$titre_trt= true;
-                	$out .= $this->actions($element);
-				
+				if($titre_trt==false){
+					$titre.= $this->titresActions();
+				}
+				$titre_trt= true;
+                $out .= $this->actions($element);		
 			}
 			$out = '<table id="'.$this->table.'" class="table table-striped">'.$titre.$out.'</table>';
-			
-
 			return $out;
-
 	}
 	
 	

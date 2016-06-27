@@ -117,6 +117,16 @@ var clicSearchUtilisateur = function(){
 	
  	.done(function( data ) {
 		$("#listeUtilisateurs").html(data);
+		$("table#utilisateurs th#actif").hide();
+		$("table#utilisateurs td#actif").hide();
+		$("table#utilisateurs td#admin").each(function(){
+			  //$(this).siblings('td.ms-vb-icon').css("visibility","hidden");
+			if ($(this).html()=='1') {
+				$(this).html('<span class="glyphicon glyphicon-check"  aria-hidden="true"></span>');
+			} else {
+				$(this).html('<span class="glyphicon glyphicon-unchecked"  aria-hidden="true"></span>');
+			}
+		});
 	});
 	return false;
 }
@@ -143,3 +153,5 @@ $(document).on('click', '.searchActif', refresh);
 $(document).ready(function() {
 	clicSearchUtilisateur();
 });
+
+
