@@ -1,3 +1,7 @@
 table#utilisateurs, table#livres, table#panier {
 	width:80%;
 }
+
+footer {
+	padding-top: 20px;
+}

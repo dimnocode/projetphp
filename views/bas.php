@@ -7,7 +7,7 @@
 
 
 
-<footer>
+<footer>	
 	<p>Par Abe Jean-Michel & Krasucki Dimitri</p>
 </footer>
 </div>

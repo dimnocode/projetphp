@@ -8,7 +8,6 @@
          <p>Faites votre choix dans le menu</p>  
       </div>       
    </div>
-</div>
 <?php     
 	require_once 'bas.php';
 ?>
