@@ -80,18 +80,20 @@ var clicSaveUtilisateur = function () {
             url: $url,
             type: 'post',
             data: $('#uform').serialize(),
-            success: function () {
+            success: function (res) {
                 //alert($('#uform').serialize());
-                $('#refresh').click();
+            	if (res.length > 0) {
+            		alert(res);
+            	} else {
+            		$('#refresh').click();
+            		$('#myModal').modal('hide');
+            	}
             }
         });
 
-        $('#myModal').modal('hide');
+        
         
     }else {$('<button type="submit">').hide().appendTo($myForm).click().remove();}
-
-
-
 };
 
 var userExist = function(){
@@ -108,14 +110,36 @@ var userExist = function(){
 
 };
 
+var clicSearchUtilisateur = function(){
+	$.post( "utilisateurs_list.php", { nom: $('#searchNom').val(), 
+									   prenom:$('#searchPrenom').val(),
+									   actif:$('input[name=actif]:checked', '#searchFormUtilisateur').val()})
+	
+ 	.done(function( data ) {
+		$("#listeUtilisateurs").html(data);
+	});
+	return false;
+}
+
 var refresh = function(){
     $('#refresh').click();
 }
 
+var liveSearchUtilisateur = function(){
+	if ($('#searchNom').val().length > 2 || $('#searchPrenom').val().length > 2 || ($('#searchNom').val().length == 0 && $('#searchPrenom').val().length == 0)) {
+		refresh();
+	}
+}
+
+$(document).on('submit', '#searchFormUtilisateur', clicSearchUtilisateur);
 $(document).on('click', '#utilisateurs #actif', clicActive);
 $(document).on('click', '#utilisateurs #modif', clicModif);
 $(document).on('click', '#ajoutUtilisateur', clicAjoutUtilisateur);
 $(document).on('click', '#saveUtilisateur', clicSaveUtilisateur);
 $(document).on('focusout', '#utilisateurInput', userExist);
-//commun à livre et utilisateur
-$(document).on('click', '.searchForm', refresh);
+$(document).on('keyup', '#searchNom', liveSearchUtilisateur);
+$(document).on('keyup', '#searchPrenom', liveSearchUtilisateur);
+$(document).on('click', '.searchActif', refresh);
+$(document).ready(function() {
+	clicSearchUtilisateur();
+});

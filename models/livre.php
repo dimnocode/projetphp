@@ -12,23 +12,26 @@ class livre extends Model {
 	var $PK = "LivreID";
 	var $data ;
     
-    public function modif($element){
-         return "<td><button type=\"button\" id=\"modif\" class=\"btn btn-primary btn-xs\">...</button></td>";
-    }
+	public function titresActions(){
+		return '<th>Modifier</th><th>Ajout panier</th></tr>';
+	}
     
-    public function action($element){        
+    public function actions($element){        
         
         if($element->actif == 1){
             $checked = "checked";
             $panier = "<form class=\"form-inline\"><input type=\"number\" class=\"form-control input-sm\" id=\"nbarticle\" name=\"nbarticle\" value=\"1\" min=\"1\" max=\"100\"> 
-                <input id=\"btajout\" type=\"button\" class=\"btn btn-warning btn-xs\" value=\"Ajouter au panier\"></form>";
+                <input id=\"btAjoutPanier\" type=\"button\" class=\"btn btn-warning btn-xs\" value=\"Ajouter au panier\"></form>";
         }else{ 
             $checked = "";
             $panier = "<span class=\"label label-danger\">Indisponible</span>";
         }
         
         
-        return "<td>".$panier."</td>";
+        return "<td>
+        			<button type=\"button\" id=\"modif\" class=\"btn btn-primary btn-xs\">...</button>
+        		</td>
+        		<td>".$panier."</td>";
 
     }
     

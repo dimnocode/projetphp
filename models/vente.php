@@ -1,43 +1,23 @@
 <?php
 
-class ventes {
+class vente extends Model{       
     
-    private $id;
-    private $datevente;
-    private $etat;
-    private $utilisateurs_utilisateur;
+    var $id;
+    var $table = "ventes";
+    var $PK = "idvente";
+    var $data;
     
-    	public function getId(){
-		return $this->id;
-	}
-
-	public function setId($id){
-		$this->id = $id;
-	}
-
-	public function getDatevente(){
-		return $this->datevente;
-	}
-
-	public function setDatevente($datevente){
-		$this->datevente = $datevente;
-	}
-
-	public function getEtat(){
-		return $this->etat;
-	}
-
-	public function setEtat($etat){
-		$this->etat = $etat;
-	}
-
-	public function getUtilisateurs_utilisateur(){
-		return $this->utilisateurs_utilisateur;
-	}
-
-	public function setUtilisateurs_utilisateur($utilisateurs_utilisateur){
-		$this->utilisateurs_utilisateur = $utilisateurs_utilisateur;
-	}
+    function vente_create($utilisateur){
+    	$sql= "call vente_create ('".$utilisateur."');";
+    	$connection = parent::getConnection(); 
+    	$connection->query($sql);
+    	$res = $connection->query('select LAST_INSERT_ID() as newid;');
+    	if ($res->rowCount() == 1) {
+    		return $res->fetch(PDO::FETCH_ASSOC)['newid'];
+    	} else {
+    		return 0;
+    	}  		
+    }
 
 }
 

@@ -47,7 +47,6 @@ class Model{
             }
          }
 			$sql= 'SELECT '.$fields.' from '.$this->table .'  where '.$sql;
-            //echo $sql;
 		}
       
 		
@@ -67,97 +66,33 @@ class Model{
 	}
 	
 	public function rtv_Table($type){
-	
-			
 			$out  = "";
-			
 			$titre= '<tr>';
 			$titre_trt= false;
-			//var_dump($this->data);
             
 			foreach($this->data as $key => $element){
                
 				$out .= '<tr>';
-                //echo "<br>";
-                //echo "<br>";
-                
-                //var_dump($element);
 				foreach($element as $subkey => $subelement){
                     if ($subkey != 'actif') {
                         if($titre_trt==false){
                             $titre .= '<th>'.$subkey.'</th>';	
                         }
-                        //echo "<br>";
-                        //echo "<br>";
-                        //var_dump($subelement);
                         $out .= '<td id="'.$subkey.'">'.$subelement.'</td>' ;
                     }
 				}
-				if($titre_trt==false){
-					$titre.= '<th>Mod</th><th>Action</th></tr>';
-				}
-				$titre_trt= true;
-                $out .= $this->modif($element);
-                $out .= $this->action($element);
-                
-//				if($type == "utilisateur"){
-//                  $out .= '<td id="id">'.$element->utilisateur.'</td></tr>';  
-//                }
-//                
-//                if($type == "livre"){
-//                  $out .= '<td id="id">'.$element->LivreID.'</td></tr>';  
-//                }
-                
+					if($titre_trt==false){
+						$titre.= $this->titresActions();
+					}
+					$titre_trt= true;
+                	$out .= $this->actions($element);
+				
 			}
 			$out = '<table id="'.$this->table.'" class="table table-striped">'.$titre.$out.'</table>';
 			
 
 			return $out;
 
-	}
-	
-	public function read($fields=null, $post=null){
-	
-		if($fields==null){
-			$fields = '*';
-		}
-	
-	
-	
-		$test='';
-		foreach($post as $key => $val)
-		{
-			if($test!=''){
-				$test.=' and';
-			} else {
-				$test.=' where';
-			}
-			$test.=" upper(".$key.") like upper('%".$val."%') ";
-		}
-	
-		if ($this->id== null){
-	
-			$sql= 'SELECT '.$fields.' from '.$this->table.$test;
-		}
-	
-		//else{
-		//	$sql= 'SELECT '.$fields.' from '.$this->table .'  where '.$this->PK.' = '.$this->id ;
-		//}
-	
-	
-		try {
-			// On envois la requète
-			$select = $this->connection->query($sql);
-			//echo $sql;
-			// On indique que nous utiliserons les résultats en tant qu'objet
-			$select->setFetchMode(PDO::FETCH_OBJ);
-			$this->data = new stdClass();
-			$this->data = $select->fetchAll();
-	
-		} catch ( Exception $e ) {
-			echo 'Une erreur est survenue lors de la récupération des créateurs';
-		}
-	
 	}
 	
 	

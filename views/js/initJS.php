@@ -2,3 +2,4 @@
 <script src="bootstrap/js/bootstrap.js"></script>
 <script src="js/utilisateurs.js"></script>
 <script src="js/livres.js"></script>
+<script src="js/panier.js"></script>

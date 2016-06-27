@@ -14,7 +14,6 @@ if( isset($_POST['livre'])){
 				$_SESSION['panier'][$livreId][$livreClef]=$livreElement;
 			}
 			$_SESSION['panier'][$livreId]['quantite']=(int)$_POST['quantite'];
-			var_dump($_SESSION['panier']);
 		}
 	}
 	

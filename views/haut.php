@@ -1,10 +1,5 @@
 <?php	
 	require_once "../controllers/core.php";
-$time = microtime();
-$time = explode(' ', $time);
-$time = $time[1] + $time[0];
-$start = $time;
-
 ?>
 <!DOCTYPE html>
 <html>

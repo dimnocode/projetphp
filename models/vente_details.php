@@ -1,60 +1,24 @@
 <?php
 
-class vente_details{
+class vente_details extends Model{       
     
-    private $idvente_detail;
-    private $quantite;
-    private $prix_unitaire;
-    private $vente_idvente;
-    private $livres_LivreID;
+    var $id;
+    var $table = "vente_details";
+    var $PK = "idvente";
+    var $data;
     
-    public function getIdvente_detail(){
-		return $this->idvente_detail;
-	}
+    function vente_details_create($livreid,$prix_unitaire,$quantite,$idvente){
+    	$sql= "call vente_details_create (".$livreid.",".$prix_unitaire.",".$quantite.",".$idvente.");";
+    	$connection = parent::getConnection(); 
+    	$connection->query($sql);
+    	$res = $connection->query('select LAST_INSERT_ID() as newid;');
+    	if ($res->rowCount() == 1) {
+    		return $res->fetch(PDO::FETCH_ASSOC)['newid'];
+    	} else {
+    		return 0;
+    	}  		
+    }
 
-	public function setIdvente_detail($idvente_detail){
-		$this->idvente_detail = $idvente_detail;
-	}
-
-	public function getQuantite(){
-		return $this->quantite;
-	}
-
-	public function setQuantite($quantite){
-		$this->quantite = $quantite;
-	}
-
-	public function getPrix_unitaire(){
-		return $this->prix_unitaire;
-	}
-
-	public function setPrix_unitaire($prix_unitaire){
-		$this->prix_unitaire = $prix_unitaire;
-	}
-
-	public function getVente_idvente(){
-		return $this->vente_idvente;
-	}
-
-	public function setVente_idvente($vente_idvente){
-		$this->vente_idvente = $vente_idvente;
-	}
-
-	public function getLivres_LivreID(){
-		return $this->livres_LivreID;
-	}
-
-	public function setLivres_LivreID($livres_LivreID){
-		$this->livres_LivreID = $livres_LivreID;
-	}
-    
 }
-
-
-
-
-
-
-
 
 ?>
