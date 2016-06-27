@@ -14,20 +14,27 @@ class utilisateur extends Model{
 	var $PK = "utilisateur";
 	var $data; 
     
+	public function titresActions(){
+		if (utilisateur::admin()){
+			return '<th>Modifier</th><th>Actif</th></tr>';
+		}
+	}
+	
     
-    public function modif($element){
-        return "<td><input type=\"button\" id=\"modif\" class=\"btn btn-primary btn-xs\" value=\"...\"></td>";
-    }
-    
-    public function action($element){        
-        
-        if($element->actif == 1){
-            $checked = "checked";
-        }else{
-            $checked = "";  
-        }
-        return "<td><input type=\"checkbox\" id=\"actif\" name=\"actif\" value=\"actif\" " .$checked." ></td>";
-
+    public function actions($element){        
+    	if (utilisateur::admin()){
+        	if($element->actif == 1){
+            	$checked = "checked";
+      	  	}else{
+            	$checked = "";  
+        	}
+        	return "<td>
+        				<input type=\"button\" id=\"modif\" class=\"btn btn-primary btn-xs\" value=\"...\">
+        			</td>
+        			<td>
+        				<input type=\"checkbox\" id=\"actif\" name=\"actif\" value=\"actif\" " .$checked." >
+        			</td>";
+    	}
     }
     
     public function getID($element){
@@ -35,9 +42,8 @@ class utilisateur extends Model{
 	}
     
     static function auth($UTILISATEUR, $CODE){
-		//$utilisateurs=Model::load("utilisateurs");
     	$utilisateurs = new utilisateur;    	
-		$utilisateurs->read('code, actif',array('utilisateur' => $UTILISATEUR ));
+		$utilisateurs->list('code, actif',array('utilisateur' => $UTILISATEUR ));
 		if(count($utilisateurs->data) >0 && $utilisateurs->data[0]->code==$CODE && $utilisateurs->data[0]->actif==1){
 			return true;
 		}else{
@@ -47,8 +53,8 @@ class utilisateur extends Model{
 
 	static function admin(){
 		if (isset($_SESSION['UTILISATEUR'])){
-			$utilisateurs=Model::load("utilisateurs");
-			$utilisateurs->read('admin',array('utilisateur' => $UTILISATEUR ));
+			$utilisateurs = new utilisateur;
+			$utilisateurs->list('admin',array('utilisateur' => $_SESSION['UTILISATEUR'] ));
 			if(count($utilisateurs->data) >0 && $utilisateurs->data[0]->admin==1){
 				return true;
 			}else{

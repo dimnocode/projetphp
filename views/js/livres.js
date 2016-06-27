@@ -18,7 +18,7 @@ var  clicActiveLivre = function(){
 
 var clicAjoutPanier = function(){
 	var elem = $( this );
-	$.post( '../controllers/control_livre_ajout.php', {livre : $(this).parent().parent().parent().find("td#LivreID").html(),quantite : $(this).parent().parent().find("input#nbarticle").val()})
+	$.post( '../controllers/control_livre_ajoutpanier.php', {livre : $(this).parent().parent().parent().find("td#LivreID").html(),quantite : $(this).parent().parent().find("input#nbarticle").val()})
   			.done(function(data) {
   					//on remet la quantité à 1 pour le prochain ajout au panier
   					elem.parent().parent().find("input#nbarticle").val(1);
@@ -29,6 +29,7 @@ var clicAjoutPanier = function(){
 //Modification livre
 var clicModifLivre = function () {
     action='update';
+    
     $('#lform')[0].reset();
     var $id = $(this).parent().parent().find("td#LivreID").html();
     $.ajax({
@@ -46,6 +47,9 @@ var clicModifLivre = function () {
                                 
                 if(res[0].actif == '1'){                    
                     $('#actifCheck').prop('checked', true);
+                    $('#btModalAjoutPanier').show();
+                } else {
+                	$('#btModalAjoutPanier').hide();
                 }
                 
                 console.log(JSON.stringify(res));
@@ -62,7 +66,8 @@ var clicModifLivre = function () {
 var clicAjoutLivre = function () {
     action='add';
     
-    $('#lform')[0].reset(); 
+    $('#lform')[0].reset();
+    $('#btModalAjoutPanier').hide();
     $('#myModal').modal('show');
 
 };
@@ -96,8 +101,41 @@ var clicSaveLivre = function () {
 
 };
 
+var clicSearchLivre = function(){
+	$.post( "livres_list.php", { titre: $('#searchTitre').val(), 
+								auteur:$('#searchAuteur').val(),
+								actif:$('input[name=actif]:checked', '#searchFormLivre').val()})
+	
+ 	.done(function( data ) {
+		$("#listeLivres").html(data);
+	});
+	return false;
+}
+
+var liveSearchLivre = function(){
+	if ($('#searchTitre').val().length > 2 || $('#searchAuteur').val().length > 2 || ($('#searchTitre').val().length == 0 && $('#searchAuteur').val().length == 0)) {
+		refresh();
+	}
+}
+
+var clicAjoutPanierModal = function(){
+	var elem = $( this );
+	$.post( '../controllers/control_livre_ajoutpanier.php', {livre : $(this).parent().parent().find("input#LivreIDInput").val(),quantite : 1})
+  			.done(function(data) {
+  					elem.parent().find("#btclose").trigger("click");
+  					}
+  				);
+}
+
+$(document).on('submit', '#searchFormLivre', clicSearchLivre);
+$(document).on('keyup', '#searchTitre', liveSearchLivre);
+$(document).on('keyup', '#searchAuteur', liveSearchLivre);
 $(document).on('click','#livres #actif',clicActiveLivre);
-$(document).on('click','#livres #btajout',clicAjoutPanier);
+$(document).on('click','#livres #btAjoutPanier',clicAjoutPanier);
 $(document).on('click', '#livres #modif', clicModifLivre);
 $(document).on('click', '#saveLivre', clicSaveLivre);
 $(document).on('click', '#ajoutLivre', clicAjoutLivre);
+$(document).on('click', '#btModalAjoutPanier', clicAjoutPanierModal);
+$(document).ready(function() {
+	clicSearchLivre();
+});

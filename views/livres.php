@@ -4,19 +4,13 @@
 
 <h2>Livres</h2>
 
-<?php
-    $last_post = $_POST;
-?>
-
-<form method="post" action="" class="form-inline">
-    <input type="text" class="form-control" name="titre" placeholder="Titre" value="<?php if(isset($last_post["titre"])){ echo $last_post["titre"];} ?>">
-    <input type="text" class="form-control" name="auteur" placeholder="Auteur" value="<?php if(isset($last_post["auteur"])){ echo $last_post["auteur"];} ?>">
-    
-    <input type="radio" class="searchForm" name="actif" value="tous"       <?php if(isset($last_post["actif"]) && $last_post["actif"] == "tous"){ echo 'checked';} ?>          > Tous     
-    <input type="radio" class="searchForm" name="actif" value="actifs"     <?php if(!isset($last_post["actif"]) || $last_post["actif"] == "actifs"){ echo 'checked';} ?>       > Disponibles              
-    <input type="radio" class="searchForm" name="actif" value="inactifs"   <?php if(isset($last_post["actif"]) && $last_post["actif"] == "inactifs"){ echo 'checked';} ?>      > Indisponibles  
-    
-    <input type="submit" id="refresh" class="btn btn-primary btn-sm" value="Rechercher">
+<form id="searchFormLivre" class="form-inline">
+    <input type="text" id="searchTitre" class="form-control" name="titre" placeholder="Titre">
+    <input type="text" id="searchAuteur" class="form-control" name="auteur" placeholder="Auteur">
+    <input type="radio" class="searchActif" name="actif" value="tous"> Tous     
+    <input type="radio" class="searchActif" name="actif" value="actifs" checked> Disponibles              
+    <input type="radio" class="searchActif" name="actif" value="inactifs"> Indisponibles  
+    <button id="refresh" type="submit" class="btn btn-primary btn-sm">Rechercher</button>
 </form>
 
 <br>
@@ -24,33 +18,8 @@
 <br>
 
 <div id="loadForm"> <?php require('livres_form.php'); ?></div>
-<?php
+<div id="listeLivres"></div>
 
-    $livres=Model::load("livre");
-
-    //Si le champs actif est setté
-    if(isset($_POST["actif"])){ 
-            
-        //Si le champs actif a comme valeur "actifs"
-        if($_POST["actif"] == "actifs"){                
-            $_POST["actif"] = 1; 
-        }
-        //Si le champs actif a comme valeur "inactifs"
-        if($_POST["actif"] == "inactifs"){
-            $_POST['actif'] = 2;
-        }
-            
-        //Si le champs actif a comme valeur "tous"
-        if($_POST["actif"] == "tous" ){
-             unset($_POST["actif"]);  
-        }
-    }else{
-            $_POST["actif"] = 1;
-        }
-    
-    $livres->list(null, $_POST);
-    echo $livres->rtv_Table("livre");
-?>
 
 <?php
 	require 'bas.php';

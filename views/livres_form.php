@@ -32,8 +32,9 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" id="saveLivre" class="btn btn-primary">Save</button>
+            	<button type="button" class="btn btn-primary" id="btModalAjoutPanier">Ajouter au panier</button>
+                <button type="button" id="btclose" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                <button type="button" id="saveLivre" class="btn btn-primary">Enregistrer</button>
             </div>
         </div>
     </div>

@@ -4,54 +4,30 @@
 
 <h2>Utilisateurs</h2>
 
-<?php
-    $last_post = $_POST;
-?>
 
-<form method="post" action="" class="form-inline">
-    <input type="text" class="form-control" name="nom" placeholder="Nom" value="<?php if(isset($last_post["nom"])){ echo $last_post["nom"];} ?>">
-    <input type="text" class="form-control" name="prenom" placeholder="Prenom" value="<?php if(isset($last_post["prenom"])){ echo $last_post["prenom"];} ?>">
-
-    <input type="radio" class="searchForm" name="actif" value="tous"       <?php if(isset($last_post["actif"]) && $last_post["actif"] == "tous"){ echo 'checked';} ?>          > Tous     
-    <input type="radio" class="searchForm" name="actif" value="actifs"     <?php if(!isset($last_post["actif"]) || $last_post["actif"] == "actifs"){ echo 'checked';} ?>       > Actifs              
-    <input type="radio" class="searchForm" name="actif" value="inactifs"   <?php if(isset($last_post["actif"]) && $last_post["actif"] == "inactifs"){ echo 'checked';} ?>      > Incatifs      
-
-    <input type="submit" id="refresh" class="btn btn-primary btn-sm" value="Rechercher">
+<form id="searchFormUtilisateur" class="form-inline">
+    <input type="text" id="searchNom" class="form-control" name="nom" placeholder="Nom">
+    <input type="text" id="searchPrenom" class="form-control" name="prenom" placeholder="Prenom">
+    <input type="radio" class="searchActif" name="actif" value="tous"> Tous     
+    <input type="radio" class="searchActif" name="actif" value="actifs" checked> Actifs              
+    <input type="radio" class="searchActif" name="actif" value="inactifs"> Incatifs      
+	<button id="refresh" type="submit" class="btn btn-primary btn-sm">Rechercher</button>
+    
 </form>
 
 <br>
-<button type="button" id="ajoutUtilisateur" class="btn btn-primary btn-sm">Ajouter un utilisateur</button>
-<br>
+<?php 
+	$utilisateurs=Model::load("utilisateur");
+	if (utilisateur::admin()){
+		echo '<button type="button" id="ajoutUtilisateur" class="btn btn-primary btn-sm">Ajouter un utilisateur</button><br>';
+	}
+?>
 
 <div id="loadForm"> <?php require('utilisateurs_form.php'); ?></div>
-<?php
-    
-    $utilisateurs=Model::load("utilisateur");
-     
-        //Si le champs actif est setté
-        if(isset($_POST["actif"])){ 
-            
-            //Si le champs actif a comme valeur "actifs"
-            if($_POST["actif"] == "actifs"){                
-                $_POST["actif"] = 1; 
-            }
-            //Si le champs actif a comme valeur "inactifs"
-            if($_POST["actif"] == "inactifs"){
-                $_POST['actif'] = 2;
-            }
-            
-            //Si le champs actif a comme valeur "tous"
-            if($_POST["actif"] == "tous" ){
-                unset($_POST["actif"]);  
-            }
-        }else{
-            $_POST["actif"] = 1;
-        }
-    
-    $utilisateurs->list(null, $_POST);
-    echo $utilisateurs->rtv_Table("utilisateur");
+<div id="listeUtilisateurs"></div>
+
    
     
-
+<?php
 	require 'bas.php';
 ?>
