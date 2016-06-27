@@ -141,3 +141,4 @@ $(document).on('click', '#btModalAjoutPanier', clicAjoutPanierModal);
 $(document).ready(function() {
 	clicSearchLivre();
 });
+
