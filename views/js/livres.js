@@ -98,6 +98,6 @@ var clicSaveLivre = function () {
 
 $(document).on('click','#livres #actif',clicActiveLivre);
 $(document).on('click','#livres #btajout',clicAjoutPanier);
+$(document).on('click', '#ajoutLivre', clicAjoutLivre);
 $(document).on('click', '#livres #modif', clicModifLivre);
 $(document).on('click', '#saveLivre', clicSaveLivre);
-$(document).on('click', '#ajoutLivre', clicAjoutLivre);

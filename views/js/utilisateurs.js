@@ -117,5 +117,5 @@ $(document).on('click', '#utilisateurs #modif', clicModif);
 $(document).on('click', '#ajoutUtilisateur', clicAjoutUtilisateur);
 $(document).on('click', '#saveUtilisateur', clicSaveUtilisateur);
 $(document).on('focusout', '#utilisateurInput', userExist);
-
+//commun à livre et utilisateur
 $(document).on('click', '.searchForm', refresh);
