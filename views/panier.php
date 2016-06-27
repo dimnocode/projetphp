@@ -32,7 +32,7 @@
     	}
     	echo "<tr><td colspan=\"2\">TOTAL:</td><td id=\"total\">";
     	require '../controllers/control_calcul_total.php'; 
-    	echo "</td><td><a href= \"../controllers/control_valide_vente.php\"><button class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-check\" aria-hidden=\"true\"></span> Valider la vente</button></a></td></tr>";
+    	echo "</td><td colspan=\"2\"><a href= \"../controllers/control_valide_vente.php\"><button class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-check\" aria-hidden=\"true\"></span> Valider la vente</button></a></td></tr>";
     	echo "</table>";
     	
     }else{
