@@ -66,10 +66,7 @@ class Model{
 	}
 	
 	public function rtv_Table($type){
-	
-			
 			$out  = "";
-			
 			$titre= '<tr>';
 			$titre_trt= false;
             
